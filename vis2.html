@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>  
+    <script>
+         var firebaseConfig = {
+    apiKey: "AIzaSyDuQd6lCO7JRYCHPIAkWn3aorizKYesAI8",
+    authDomain: "cfgproject-c33df.firebaseapp.com",
+    databaseURL: "https://cfgproject-c33df.firebaseio.com",
+    projectId: "cfgproject-c33df",
+    storageBucket: "cfgproject-c33df.appspot.com",
+    messagingSenderId: "450723055305",
+    appId: "1:450723055305:web:5bd0544852726c215d2f18",
+    measurementId: "G-8JE61KKPVY"
+  };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+          const db=firebase.firestore();
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<canvas id="myChart"></canvas>
+<script>
+    console.log("JJJJJJJJ")
+    var Data=[0,0];
+    db.collection("form2")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            // var Data = []
+            Data[0] = Data[0] + doc.data().Numberofhouses_Mixedwaste; 
+            Data[1] = Data[1] + doc.data().Numberofhouses_Segmentedwaste;
+            console.log(Data);
+        }); 
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        console.log(Data);
+        var chartLine = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'doughnut',
+
+        // The data for our dataset
+        data: {
+            labels: ['Mixed Waste', 'Segmented Waste'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 250, 132)',
+                // borderColor: 'rgb(255, 99, 132)',
+                
+                data: Data
+            }],
+            labels: [
+        'Mixed Waste',
+        // 'Yellow',
+        'Segmented Waste'
+    ]
+        },
+
+        // Configuration options go here
+        options: {}
+        });
+//         var ctx1 = document.getElementById('myChart').getContext('2d');
+//         var chartBar = new Chart(ctx1, {
+//         // The type of chart we want to create
+//         type: 'bar',
+
+//         // The data for our dataset
+//         data: {
+//             labels: ['Dry waste', 'Wet Waste', 'Radioactive waste'],
+//             datasets: [{
+//                 label: 'My First dataset',
+//                 backgroundColor: 'rgb(255, 99, 132)',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 data: [30,50,70]
+//             }]
+//         },
+
+//         // Configuration options go here
+//         options: {}
+//         });
+//         var myBarChart = new Chart(ctx, {
+//         type: 'bar',
+//         data: Data,
+//         options: options
+// });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    // Data[0]=20;
+    // Data[1] = 20;
+    // console.log(Data[0]);
+    let i=0;
+    
+//     var firebaseConfig = {
+//     apiKey: "AIzaSyDuQd6lCO7JRYCHPIAkWn3aorizKYesAI8",
+//     authDomain: "cfgproject-c33df.firebaseapp.com",
+//     databaseURL: "https://cfgproject-c33df.firebaseio.com",
+//     projectId: "cfgproject-c33df",
+//     storageBucket: "cfgproject-c33df.appspot.com",
+//     messagingSenderId: "450723055305",
+//     appId: "1:450723055305:web:5bd0544852726c215d2f18",
+//     measurementId: "G-8JE61KKPVY"
+//   };
+//           // Initialize Firebase
+//           firebase.initializeApp(firebaseConfig);
+//           firebase.analytics();
+//           const db=firebase.firestore();
+
+
+ 
+
+</script>
+
+
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

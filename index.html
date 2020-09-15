@@ -1,0 +1,335 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>Data-Getter</title>
+  <style>header{
+    background: url(image/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+  }
+  @media screen and (max-width: 670px){
+    header{
+      min-height: 500px;
+    }
+  }
+  .section{
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+  }
+  .tabs .indicator{
+    background-color: #1a237e;
+  }
+  .tabs .tab a:focus, .tabs .tab a:focus.active{
+    background: transparent;
+  }</style>
+</head>
+<body class="grey lighten-3" id="alpha">
+
+  
+  <nav class="z-depth-0 grey lighten-4">
+    <div class="nav-wrapper container">
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text" id="logout">Logout</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+          </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Register</a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </nav>
+
+  
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+      <h4>Sign up</h4><br />
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="signup-bio" required />
+          <label for="signup-bio">User/Viewer</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4><br />
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div id="modal-account" class="modal">
+    <div class="modal-content center-align">
+      <h4>Account details</h4><br />
+      <div class="account-details"></div>
+    </div>
+  </div>
+
+  <!-- CREATE GUIDE MODAL -->
+  <div id="modal-create" class="modal">
+    <div class="modal-content">
+      <h4>Create Guide</h4><br />
+      <form id="create-form">
+        <div class="input-field">
+          <input type="text" id="title" required>
+          <label for="title">Form Name</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="content" required>
+          <label for="title">Enter your Question Here</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Create</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+    </ul>
+  </div>
+  <div class="logged-out">
+    
+  
+    <!-- photo / grid -->
+    <section class="container section scrollspy" id="photos">
+      <div class="row">
+        <div class="col s12 l4">
+            <img src="img/z.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 offset-l1">
+          <h2 class="indigo-text text-darken-4">SOLID WASTE MANAGEMENT</h2>
+          <p>We focus on data driven and research based methodologies to focus on systemic overhaul of solid waste management processes of cities, towns and villages. We work with Urban Local Bodies and Gram Panchayats to optimize the use of existing resources to provide effective solid waste management services.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 l4 offset-l1 push-l7">
+            <img src="img/x.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 offset-l1 pull-l5 right-align">
+          <h2 class="indigo-text text-darken-4">GREEN COVER MANAGEMENT</h2>
+          <p>Our cities towns and villages are reeling under the effects of climate change. A direct consequence of the lack of trees and green cover in human habitats, is the heat island effect, as well as a lack of recreational spaces for children, youth and the elderly. We build and deliver solutions to address this problem..</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 l4">
+            <img src="img/c.jpg" alt="" class="responsive-img materialboxed">
+        </div>
+        <div class="col s12 l6 offset-l1">
+          <h2 class="indigo-text text-darken-4">WASTE WATER MANAGEMENT</h2>
+          <p>We realize the importance water to support our green cover projects and to sustain green cover of any urban forest. However, since inception we have been focused on treating waste water or reusing water to support our projects. To be able to do so we have worked on Nala cleaning and setting up of Eco STP projects.
+
+            Click here to know more</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- parallax -->
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="img/was.jpg" alt="" class="responsive-img">
+      </div>
+    </div>
+  
+    <!-- services / tabs -->
+    <section class="section container scrollspy" id="services">
+      <div class="row">
+        <div class="col s12 l4">
+          <h2 class="indigo-text text-darken-4">What We do..</h2>
+          <p>CARPE is a not-for-profit company registered under Sec. 8 of the Indian Companies Act, 2013. It is based in Aurangabad, Maharashtra.
+           While Solid Waste Management has been our first area of focus, we have diversified with a focus on actionable research to assist in driving measurable social impact in various fields through Corporate Social Responsibility (CSR).
+          </p>
+        </div>
+        <div class="col s12 l6 offset-l2">
+          <!-- tabs -->
+          <ul class="tabs">
+            <li class="tab col s6">
+              <a href="#photography" class="active indigo-text text-darken-4">SOLID WASTE MANAGEMENT
+              </a>
+            </li>
+            <li class="tab col s6">
+              <a href="#editing" class="indigo-text text-darken-4">Green Cover Management</a>
+            </li>
+          </ul>
+          <div id="photography" class="col s12">
+              <p class="flow-text indigo-text text-darken-4">SOLID WASTE MANAGEMENT</p>
+              <p>We focus on data driven and research based methodologies to focus on systemic overhaul of solid waste management processes of cities, towns and villages. We work with Urban Local Bodies and Gram Panchayats to optimize the use of existing resources to provide effective solid waste management services.
+
+                Click here to know more.</p>
+          </div>
+          <div id="editing" class="col s12">
+              <p class="flow-text indigo-text text-darken-4">Green Cover Management</p>
+              <p>Our cities towns and villages are reeling under the effects of climate change. A direct consequence of the lack of trees and green cover in human habitats, is the heat island effect, as well as a lack of recreational spaces for children, youth and the elderly. We build and deliver solutions to address this problem.
+
+              </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- parallax -->
+    <div class="parallax-container">
+      <div class="parallax">
+        <img src="img/2.jpg" alt="" class="responsive-img">
+      </div>
+    </div>
+  
+    <!-- contact form -->
+    <section class="section container scrollspy" id="contact">
+      <div class="row">
+        <div class="col s12 l5">
+          <h2 class="indigo-text text-darken-4">
+        </div>
+        <div class="col s12 l5 offset-l2">
+          <form>
+            <div class="input-field">
+              <i class="material-icons prefix">email</i>
+              <input type="email" id="email">
+              <label for="email">Your Email</label>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">message</i>
+              <textarea id="message" class="materialize-textarea" cols="20" rows="20"></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <div class="input-field">
+              <i class="material-icons prefix">date_range</i>
+              <input type="text" id="date" class="datepicker">
+              <label for="date">Choose a date you need me for...</label>
+            </div>
+            <div class="input-field">
+              <p>Services required:</p>
+              <p>
+                <label>
+                  <input type="checkbox">
+                  <span>User</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input type="checkbox">
+                  <span>Viewer/span>
+                </label>
+              </p>
+            </div>
+            <div class="input-field center">
+              <button class="btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  
+    <!-- footer -->
+    
+      <div class="footer-copyright grey darken-4">
+        <div class="container center-align white-text">&copy; 2020 Carepe</div>
+      </div>
+    </footer>
+  </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+  
+        $('.sidenav').sidenav();
+        $('.materialboxed').materialbox();
+        $('.parallax').parallax();
+        $('.tabs').tabs();
+        $('.datepicker').datepicker({
+          disableWeekends: true,
+          yearRange: 1
+        });
+        $('.tooltipped').tooltip();
+        $('.scrollspy').scrollSpy();
+  
+      });
+    </script>
+ 
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDuQd6lCO7JRYCHPIAkWn3aorizKYesAI8",
+    authDomain: "cfgproject-c33df.firebaseapp.com",
+    databaseURL: "https://cfgproject-c33df.firebaseio.com",
+    projectId: "cfgproject-c33df",
+    storageBucket: "cfgproject-c33df.appspot.com",
+    messagingSenderId: "450723055305",
+    appId: "1:450723055305:web:5bd0544852726c215d2f18",
+    measurementId: "G-8JE61KKPVY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // update firestore settings
+  
+  </script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+  <script></script>
+</body>
+</html>
